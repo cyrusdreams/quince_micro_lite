@@ -1,0 +1,210 @@
+%% LyX 2.4.3 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[a4paper,oneside,british]{book}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage[]
+ {hyperref}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\pdfpageheight\paperheight
+\pdfpagewidth\paperwidth
+
+
+\makeatother
+
+\usepackage{listings}
+\renewcommand{\lstlistingname}{\protect\inputencoding{latin9}Listing}
+
+\begin{document}
+\title{Quince micro lite (v0.9)}
+\author{CyrusDreams}
+\date{December 2025}
+\maketitle
+
+\chapter*{Introduction}
+
+The 10-cent-microcontroller, it was everywhere in the news. With a
+32bit RISC-V core and useful peripherals, the CH32V003 from WCH is
+suited to many projects. But such a small microcontroller needs to
+be programmed via a dedicated adapter. In a forum at mikrocontroller.net,
+user F.P. analyzed the WCH LinkE debugging adapter and came to the
+conclusion that the binary code from WCH can be run on the USB enabled
+CH32V305 microcontroller. And because the CH32V305 da do so much more
+than its smaller sibling, the idea of this development board was born. 
+
+This description is valid for the `lite' variant of said development
+board an its first produced version `0.9'.
+
+\chapter{Features of the Quince~micro~lite}
+\begin{itemize}
+\item board dimensions of 21~mm {*} 51~mm are the same as a \emph{RaspberryPi
+Pico}, but it lacks the mounting holes, due to the use of an USB-C
+connector
+\item the pinout of the board is designed to match the peripherals on the
+\emph{ClockworkPi Pico Calc} mainboard
+\item the boards has mounting pads for a microSD card slot and a connector
+for an OLED screen, if those are mounted, the board has the same features
+as a \emph{Longan Nano}
+\item the \emph{LinkE} debug connector is found on the PCB edge, the ``lite''
+version omits the switchable target suply voltages
+\item on the bottom side of the PCB, a CAN bus transceiver can be mounted,
+this makes the Quince micro a small CAN bus node
+\item a RGB LED can be controlled from the microcontroller, two of the LEDs
+share the port with the Rx/Tx lines of the debug interface
+\end{itemize}
+
+\section{Pinout of the Quince micro}
+
+\includegraphics[angle=90,scale=0.5]{docmentation/quince_micro_pinout}
+
+The coloured signals match the ones on a \emph{Raspberry Pi Pico}. 
+
+Remark: ports PB8 and PB9 will be exchanged in a later revision of
+the \emph{Quince micro} to enable an additional I\texttwosuperior C
+interface, compatible to the \emph{Raspberry Pi} pinout.
+
+\section{Quince micro compared to the Longan~nano}
+
+\includegraphics[scale=0.5]{docmentation/quince_micro_longan_nano}
+
+On the bottom side of the \emph{Quince micro}, additional parts can
+be assembled to have a similar functionality as a \emph{Longan nano}
+development board:
+\begin{itemize}
+\item microSD slot, the port pins are also available on pins 21, 22, 24
+and 25 of the \emph{Quince micro} 
+\item eight-pin connector for OLED displays
+\end{itemize}
+
+\section{Quince micro as a CAN bus node}
+
+On the bottom side of the PCB, a CAN bus transceiver can be mounted
+(position U50) with its decoupling caacitor (C51, 100nF) and a four
+pole SMD pin header. With the available signals CAN-high, CAN-low,
+5V-supply and Ground, the Quince micro can be supplied with power
+and act as a CAN bus node.
+
+\includegraphics[scale=0.5]{docmentation/quince-micro_CAN}
+
+Recommended are CAN-SIC transceivers (Signal Improvement Capability),
+if the additional cost of approximately 0.15€ is bearable for the
+intended project. These newer transceivers enable higher data rates
+and/or longer wiring distances than older CAN-FD transceivers. For
+\emph{Quince micro}, CAN transceivers with `standby' input and separate
+IO voltage are suitable. Examples of compatible transceivers are TJA1462
+, TCAN1462, TLE9371VSJ and others.
+
+\chapter{Quince micro is a Debugger}
+
+\section{Features of the Quince micro as a WCH LinkE Debugger}
+
+On the short side of the PCB, opposite of the USB-S connector, there
+are solder pads suitable for two sets of five pin headers. The pinout
+is close to the \emph{WCH LinkE R0 1v3}; the switchable supply pins
+are missing. Also not available is the ``ModeSelect'' button. Its
+functionality can be controlled via software, as stated in the ``WCH-LinkUserManual''
+(version V2.4).
+
+\section{Setup of the Quince micro as a LinkE Debugger}
+
+In the forum of mikrocontroller.net, user \href{https://www.mikrocontroller.net/user/show/fail}{Benutzer F.P. (fail)}
+posted the following \href{https://www.mikrocontroller.net/topic/578672\#7974902}{Instructions}
+that are similar for the \emph{Quince micro}:
+\begin{enumerate}
+\item Install the software from WCH installieren, commands for Linux:
+\begin{enumerate}
+\item \bgroup\inputencoding{latin9}
+\begin{lstlisting}
+git clone https://github.com/ch32-rs/wchisp
+\end{lstlisting}
+\leavevmode\egroup
+\item \bgroup\inputencoding{latin9}
+\begin{lstlisting}
+git clone https://github.com/ch32-rs/wlink
+\end{lstlisting}
+\leavevmode\egroup
+\end{enumerate}
+\item Build the software (see respective dokumentation)
+\item Put the microcontroller into the USB programming mode
+\begin{enumerate}
+\item unpower the Quince micro
+\item push and hold BOOT0 switch
+\item connect USB to a PC
+\item release BOOT0 switch
+\end{enumerate}
+\item Flash the firmware from MounRiverStudio (see \href{https://www.mikrocontroller.net/attachment/672558/WCH-LinkE-APP-IAP.bin}{mikrocontroller.net)}
+\begin{enumerate}
+\item \bgroup\inputencoding{latin9}
+\begin{lstlisting}
+wchisp flash WCH-LinkE-APP-IAP.bin
+\end{lstlisting}
+\leavevmode\egroup
+\end{enumerate}
+\item restart the Quince micro: unplug USB, reconnect USB
+\end{enumerate}
+Now the Quince micro is ready to function as a WCH-LinkE apter. After
+connecting it to another CH32 target (for example another Quince micro),
+the second microcontroller can be programmed with, for example:
+\begin{enumerate}
+\item \bgroup\inputencoding{latin9}
+\begin{lstlisting}
+wlink flash blink.bin
+\end{lstlisting}
+\leavevmode\egroup
+\end{enumerate}
+The connection to a second Quince micro is done by connecting the
+pins SWDIO and SWCLK of both boards.
+
+\chapter{Developing Software for the Quince~micro}
+
+\section{MounRiver Studio}
+
+MounRiver Studio is the IDE preferred by WCH.
+
+\section{Arduino}
+
+WCH has released their own Arduino core. With it, the CH32V305-Microcontroller
+of the Qince micro can be programmed with the Arduino IDE. The board
+itself is not available in the IDE, but the peripherals can be addressed
+as on the development board `CH32V305RBT6'. The following pins (D{*}
+and A{*}) are available:
+
+\includegraphics[scale=0.5]{docmentation/quince_micro_arduino}
+
+\section{PlatformIO}
+
+There is a GitHub repositry for \href{https://github.com/Community-PIO-CH32V/platform-ch32v}{CH32V}
+in the PlatformIO IDE.
+
+\section{cnlohr / ch32fun}
+
+Developer and YouTuber CNLohr (Charles) released his own development
+environment for CH32V with the name \href{https://github.com/cnlohr/ch32fun}{ch32fun}
+on GitHub.
+
+\section{Python}
+
+There is an \href{https://github.com/r4d10n/micropython-wch-ch32v307/tree/master/ports/wch}{experimental port}
+of MicroPython for the CH32V307, this should also be useable for the
+CH32V305.
+
+\chapter*{Annex}
+
+\section*{Copyright}
+
+This text is licensed by CC-BY-SA-4.0. Product names and other trademarks
+are in the possession of their respective owners. This text makes
+no claim regarding those names but needs to use them for documentation
+and clarification purposes. 
+
+The Quince micro lite board itself is licensed via CERN-OHL-S-2.0,
+modifications and improvements are welcome.
+\end{document}

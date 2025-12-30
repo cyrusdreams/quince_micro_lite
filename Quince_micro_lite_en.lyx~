@@ -1,0 +1,660 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\maintain_unincluded_children no
+\language british
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style british
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Quince micro lite (v0.9)
+\end_layout
+
+\begin_layout Author
+CyrusDreams
+\end_layout
+
+\begin_layout Date
+December 2025
+\end_layout
+
+\begin_layout Chapter*
+Introduction
+\end_layout
+
+\begin_layout Standard
+The 10-cent-microcontroller,
+ it was everywhere in the news.
+ With a 32bit RISC-V core and useful peripherals,
+ the CH32V003 from WCH is suited to many projects.
+ But such a small microcontroller needs to be programmed via a dedicated adapter.
+ In a forum at mikrocontroller.net,
+ user F.P.
+ analyzed the WCH LinkE debugging adapter and came to the conclusion that the binary code from WCH can be run on the USB enabled CH32V305 microcontroller.
+ And because the CH32V305 da do so much more than its smaller sibling,
+ the idea of this development board was born.
+ 
+\end_layout
+
+\begin_layout Standard
+This description is valid for the 
+\begin_inset Quotes bld
+\end_inset
+
+lite
+\begin_inset Quotes brd
+\end_inset
+
+ variant of said development board an its first produced version 
+\begin_inset Quotes bld
+\end_inset
+
+0.9
+\begin_inset Quotes brd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Chapter
+Features of the Quince
+\begin_inset space ~
+\end_inset
+
+micro
+\begin_inset space ~
+\end_inset
+
+lite
+\end_layout
+
+\begin_layout Itemize
+board dimensions of 21
+\begin_inset space ~
+\end_inset
+
+mm * 51
+\begin_inset space ~
+\end_inset
+
+mm are the same as a 
+\emph on
+RaspberryPi Pico
+\emph default
+,
+ but it lacks the mounting holes,
+ due to the use of an USB-C connector
+\end_layout
+
+\begin_layout Itemize
+the pinout of the board is designed to match the peripherals on the 
+\emph on
+ClockworkPi Pico Calc
+\emph default
+ mainboard
+\end_layout
+
+\begin_layout Itemize
+the boards has mounting pads for a microSD card slot and a connector for an OLED screen,
+ if those are mounted,
+ the board has the same features as a 
+\emph on
+Longan Nano
+\end_layout
+
+\begin_layout Itemize
+the 
+\emph on
+LinkE
+\emph default
+ debug connector is found on the PCB edge,
+ the 
+\begin_inset Quotes eld
+\end_inset
+
+lite
+\begin_inset Quotes erd
+\end_inset
+
+ version omits the switchable target suply voltages
+\end_layout
+
+\begin_layout Itemize
+on the bottom side of the PCB,
+ a CAN bus transceiver can be mounted,
+ this makes the Quince micro a small CAN bus node
+\end_layout
+
+\begin_layout Itemize
+a RGB LED can be controlled from the microcontroller,
+ two of the LEDs share the port with the Rx/Tx lines of the debug interface
+\end_layout
+
+\begin_layout Section
+Pinout of the Quince micro
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename docmentation/quince_micro_pinout.png
+	scale 50
+	rotateAngle 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The coloured signals match the ones on a 
+\emph on
+Raspberry Pi Pico
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Remark:
+ ports PB8 and PB9 will be exchanged in a later revision of the 
+\emph on
+Quince micro
+\emph default
+ to enable an additional I²C interface,
+ compatible to the 
+\emph on
+Raspberry Pi
+\emph default
+ pinout.
+\end_layout
+
+\begin_layout Section
+Quince micro compared to the Longan
+\begin_inset space ~
+\end_inset
+
+nano
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename docmentation/quince_micro_longan_nano.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On the bottom side of the 
+\emph on
+Quince micro
+\emph default
+,
+ additional parts can be assembled to have a similar functionality as a 
+\emph on
+Longan nano
+\emph default
+ development board:
+\end_layout
+
+\begin_layout Itemize
+microSD slot,
+ the port pins are also available on pins 21,
+ 22,
+ 24 and 25 of the 
+\emph on
+Quince micro
+\emph default
+ 
+\end_layout
+
+\begin_layout Itemize
+eight-pin connector for OLED displays
+\end_layout
+
+\begin_layout Section
+Quince micro as a CAN bus node
+\end_layout
+
+\begin_layout Standard
+On the bottom side of the PCB,
+ a CAN bus transceiver can be mounted (position U50) with its decoupling caacitor (C51,
+ 100nF) and a four pole SMD pin header.
+ With the available signals CAN-high,
+ CAN-low,
+ 5V-supply and Ground,
+ the Quince micro can be supplied with power and act as a CAN bus node.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename docmentation/quince-micro_CAN.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Recommended are CAN-SIC transceivers (Signal Improvement Capability),
+ if the additional cost of approximately 0.15€ is bearable for the intended project.
+ These newer transceivers enable higher data rates and/or longer wiring distances than older CAN-FD transceivers.
+ For 
+\emph on
+Quince micro
+\emph default
+,
+ CAN transceivers with 
+\begin_inset Quotes bld
+\end_inset
+
+standby
+\begin_inset Quotes brd
+\end_inset
+
+ input and separate IO voltage are suitable.
+ Examples of compatible transceivers are TJA1462 ,
+ TCAN1462,
+ TLE9371VSJ and others.
+\end_layout
+
+\begin_layout Chapter
+Quince micro is a Debugger
+\end_layout
+
+\begin_layout Section
+Features of the Quince micro as a WCH LinkE Debugger
+\end_layout
+
+\begin_layout Standard
+On the short side of the PCB,
+ opposite of the USB-S connector,
+ there are solder pads suitable for two sets of five pin headers.
+ The pinout is close to the 
+\emph on
+WCH LinkE R0 1v3
+\emph default
+;
+ the switchable supply pins are missing.
+ Also not available is the 
+\begin_inset Quotes eld
+\end_inset
+
+ModeSelect
+\begin_inset Quotes erd
+\end_inset
+
+ button.
+ Its functionality can be controlled via software,
+ as stated in the 
+\begin_inset Quotes eld
+\end_inset
+
+WCH-LinkUserManual
+\begin_inset Quotes erd
+\end_inset
+
+ (version V2.4).
+\end_layout
+
+\begin_layout Section
+Setup of the Quince micro as a LinkE Debugger
+\end_layout
+
+\begin_layout Standard
+In the forum of mikrocontroller.net,
+ user 
+\begin_inset CommandInset href
+LatexCommand href
+name "Benutzer F.P. (fail)"
+target "https://www.mikrocontroller.net/user/show/fail"
+literal "false"
+
+\end_inset
+
+ posted the following 
+\begin_inset CommandInset href
+LatexCommand href
+name "Instructions"
+target "https://www.mikrocontroller.net/topic/578672#7974902"
+literal "false"
+
+\end_inset
+
+ that are similar for the 
+\emph on
+Quince micro
+\emph default
+:
+\end_layout
+
+\begin_layout Enumerate
+Install the software from WCH installieren,
+ commands for Linux:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+git clone https://github.com/ch32-rs/wchisp
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+git clone https://github.com/ch32-rs/wlink
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Build the software (see respective dokumentation)
+\end_layout
+
+\begin_layout Enumerate
+Put the microcontroller into the USB programming mode
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+unpower the Quince micro
+\end_layout
+
+\begin_layout Enumerate
+push and hold BOOT0 switch
+\end_layout
+
+\begin_layout Enumerate
+connect USB to a PC
+\end_layout
+
+\begin_layout Enumerate
+release BOOT0 switch
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Flash the firmware from MounRiverStudio (see 
+\begin_inset CommandInset href
+LatexCommand href
+name "mikrocontroller.net)"
+target "https://www.mikrocontroller.net/attachment/672558/WCH-LinkE-APP-IAP.bin"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+wchisp flash WCH-LinkE-APP-IAP.bin
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+restart the Quince micro:
+ unplug USB,
+ reconnect USB
+\end_layout
+
+\begin_layout Standard
+Now the Quince micro is ready to function as a WCH-LinkE apter.
+ After connecting it to another CH32 target (for example another Quince micro),
+ the second microcontroller can be programmed with,
+ for example:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+wlink flash blink.bin
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The connection to a second Quince micro is done by connecting the pins SWDIO and SWCLK of both boards.
+\end_layout
+
+\begin_layout Chapter
+Developing Software for the Quince
+\begin_inset space ~
+\end_inset
+
+micro
+\end_layout
+
+\begin_layout Section
+MounRiver Studio
+\end_layout
+
+\begin_layout Standard
+MounRiver Studio is the IDE preferred by WCH.
+\end_layout
+
+\begin_layout Section
+Arduino
+\end_layout
+
+\begin_layout Standard
+WCH hat einen eigenen Arduino-Core veröffentlicht,
+ damit kann der CH32V305-Microcontroller des Qince micro mit Arduino programmiert werden.
+ Das Board selbst ist allerdings nicht hinterlegt,
+ die Peripherie kann anhand der Belegung des Entwicklungsboards 
+\begin_inset Quotes eld
+\end_inset
+
+CH32V305RBT6
+\begin_inset Quotes erd
+\end_inset
+
+ verwendet werden.
+ Folgende Pins (D* und A*) können verwendet werden:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename docmentation/quince_micro_arduino.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+PlatformIO
+\end_layout
+
+\begin_layout Standard
+Es gibt ein GitHub-Repositry für 
+\begin_inset CommandInset href
+LatexCommand href
+name "CH32V"
+target "https://github.com/Community-PIO-CH32V/platform-ch32v"
+literal "false"
+
+\end_inset
+
+ in der Entwucklingsumgebung PlatformIO.
+\end_layout
+
+\begin_layout Section
+cnlohr / ch32fun
+\end_layout
+
+\begin_layout Standard
+Der Entwickler und YouTuber CNLohr (Charles) hat für CH32V eine eigene Entwickungsumgebung namens 
+\begin_inset CommandInset href
+LatexCommand href
+name "ch32fun"
+target "https://github.com/cnlohr/ch32fun"
+literal "false"
+
+\end_inset
+
+ veröffentlicht.
+\end_layout
+
+\begin_layout Section
+Python
+\end_layout
+
+\begin_layout Standard
+Es gibt einen 
+\begin_inset CommandInset href
+LatexCommand href
+name "experimentellen Port"
+target "https://github.com/r4d10n/micropython-wch-ch32v307/tree/master/ports/wch"
+literal "false"
+
+\end_inset
+
+ von MicroPython für den CH32V307,
+ dieser sollte sich auch für den CH32V305 verwenden lassen.
+\end_layout
+
+\begin_layout Chapter*
+Anhang
+\end_layout
+
+\begin_layout Section*
+Urheberrechte
+\end_layout
+
+\begin_layout Standard
+Dieser Test steht unter der CC-BY-SA-Lizenz.
+ Markennamen und sonstige geschützte Begriffe sind Eigentum der jeweiligen Rechteinhaber.
+ Dieser Text macht sich keinen dieser Begriffe zu eigen,
+ sie werden im Text zur Dokumentation und Klarstellung verwendet.
+\end_layout
+
+\begin_layout Standard
+Das Quince micro Board selbst steht unter der CERN-OHL-S-2.0-Lizenz,
+ Veränderungen und Verbesserungen sind ausdrücklich erwünscht.
+\end_layout
+
+\end_body
+\end_document
