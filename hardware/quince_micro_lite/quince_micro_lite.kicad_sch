@@ -6,8 +6,8 @@
 	(paper "A3")
 	(title_block
 		(title "Quince micro lite")
-		(date "2025-12-15")
-		(rev "0.9")
+		(date "2026-01-23")
+		(rev "1.0")
 		(company "CyrusDreams")
 		(comment 1 "CERN-OHL-S-2.0")
 	)
@@ -7241,10 +7241,6 @@
 		(uuid "6e8d750c-c3fe-4add-8c3b-374aa6f979c0")
 	)
 	(no_connect
-		(at 208.28 198.12)
-		(uuid "723716f1-459a-42af-89bd-6360ce3f37aa")
-	)
-	(no_connect
 		(at 180.34 58.42)
 		(uuid "78b26cdd-ed36-48dc-8eee-8be3d0212f24")
 	)
@@ -7255,10 +7251,6 @@
 	(no_connect
 		(at 180.34 55.88)
 		(uuid "8912165a-a2a8-46cb-b7a9-4f6f32d9acb3")
-	)
-	(no_connect
-		(at 208.28 200.66)
-		(uuid "93b29f35-18d0-492d-b28b-1a3d6963409e")
 	)
 	(no_connect
 		(at 149.86 53.34)
@@ -7299,6 +7291,16 @@
 			(type default)
 		)
 		(uuid "033e2b41-65d4-4a32-9b24-1e71840934b1")
+	)
+	(wire
+		(pts
+			(xy 255.27 200.66) (xy 208.28 200.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0362f591-b44a-489b-bc58-b05f5944b1f0")
 	)
 	(wire
 		(pts
@@ -7609,6 +7611,16 @@
 			(type default)
 		)
 		(uuid "2f18b536-c29d-4cbb-8b3a-0f022ae56c42")
+	)
+	(wire
+		(pts
+			(xy 255.27 190.5) (xy 255.27 200.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2ff6f00a-131f-451f-92a3-a830780de12d")
 	)
 	(wire
 		(pts
@@ -8542,6 +8554,16 @@
 	)
 	(wire
 		(pts
+			(xy 248.92 190.5) (xy 248.92 198.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "82c8d001-3f93-4a6e-8722-8d9b36b799e8")
+	)
+	(wire
+		(pts
 			(xy 256.54 59.69) (xy 259.08 59.69)
 		)
 		(stroke
@@ -9469,6 +9491,16 @@
 			(type default)
 		)
 		(uuid "eac476aa-f64f-4970-abe6-574fa74df231")
+	)
+	(wire
+		(pts
+			(xy 248.92 198.12) (xy 208.28 198.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eb22ec5d-34d6-42eb-9281-fea32c5e4a91")
 	)
 	(wire
 		(pts
@@ -10886,7 +10918,7 @@
 	)
 	(global_label "LCD_RES_B"
 		(shape output)
-		(at 144.78 124.46 180)
+		(at 144.78 121.92 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -10896,7 +10928,7 @@
 		)
 		(uuid "92406286-a414-4425-b666-32363edda2ac")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 131.393 124.46 0)
+			(at 131.393 121.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11788,7 +11820,7 @@
 	)
 	(global_label "LCD_RS"
 		(shape output)
-		(at 144.78 121.92 180)
+		(at 144.78 124.46 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11798,7 +11830,7 @@
 		)
 		(uuid "fe383155-5e0f-4887-a7e7-efc06b478bab")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 134.7796 121.92 0)
+			(at 134.7796 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16299,6 +16331,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+5V")
+		(at 255.27 190.5 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9ca88165-5c1a-407b-943b-47a1f231f955")
+		(property "Reference" "#PWR025"
+			(at 255.27 194.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 255.27 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 255.27 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 255.27 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 255.27 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3ea06492-1fa7-4de0-8a9a-eae6d5744527")
+		)
+		(instances
+			(project "quince_micro_lite"
+				(path "/f7b4b346-adb6-4766-81a5-1532c12bdb12"
+					(reference "#PWR025")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 276.86 157.48 0)
 		(unit 1)
@@ -16491,6 +16589,71 @@
 			(project "quince_micro"
 				(path "/f7b4b346-adb6-4766-81a5-1532c12bdb12"
 					(reference "#PWR026")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 248.92 190.5 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "aab65fea-bcb7-4031-a4c7-f4d027d7762e")
+		(property "Reference" "#PWR010"
+			(at 248.92 194.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 248.92 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 248.92 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 248.92 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 248.92 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fc05bff1-7359-4c6e-935b-10b781745607")
+		)
+		(instances
+			(project "quince_micro_lite"
+				(path "/f7b4b346-adb6-4766-81a5-1532c12bdb12"
+					(reference "#PWR010")
 					(unit 1)
 				)
 			)

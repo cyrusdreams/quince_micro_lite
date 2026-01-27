@@ -24,9 +24,9 @@
 \renewcommand{\lstlistingname}{\protect\inputencoding{latin9}Listing}
 
 \begin{document}
-\title{Quince micro lite (v0.9)}
+\title{Quince micro lite (v1.0)}
 \author{CyrusDreams}
-\date{December 2025}
+\date{January 2026}
 \maketitle
 
 \chapter*{Introduction}
@@ -37,11 +37,14 @@ suited to many projects. But such a small microcontroller needs to
 be programmed via a dedicated adapter. In a forum at mikrocontroller.net,
 user F.P. analyzed the WCH LinkE debugging adapter and came to the
 conclusion that the binary code from WCH can be run on the USB enabled
-CH32V305 microcontroller. And because the CH32V305 da do so much more
-than its smaller sibling, the idea of this development board was born. 
+CH32V305 microcontroller. And because the CH32V305 can do so much
+more than its smaller sibling, the idea of this development board
+was born. 
 
 This description is valid for the `lite' variant of said development
-board an its first produced version `0.9'.
+board and its second production release version `1.0'.
+
+\includegraphics[scale=0.4]{docmentation/quince_front_kl}
 
 \chapter{Features of the Quince~micro~lite}
 \begin{itemize}
@@ -54,7 +57,7 @@ connector
 for an OLED screen, if those are mounted, the board has the same features
 as a \emph{Longan Nano}
 \item the \emph{LinkE} debug connector is found on the PCB edge, the ``lite''
-version omits the switchable target suply voltages
+version omits the switchable target supply voltages
 \item on the bottom side of the PCB, a CAN bus transceiver can be mounted,
 this makes the Quince micro a small CAN bus node
 \item a RGB LED can be controlled from the microcontroller, two of the LEDs
@@ -67,9 +70,8 @@ share the port with the Rx/Tx lines of the debug interface
 
 The coloured signals match the ones on a \emph{Raspberry Pi Pico}. 
 
-Remark: ports PB8 and PB9 will be exchanged in a later revision of
-the \emph{Quince micro} to enable an additional I\texttwosuperior C
-interface, compatible to the \emph{Raspberry Pi} pinout.
+Remark: ports PB8 and PB9 are exchanged in the v0.9 revision of the
+\emph{Quince micro lite}.
 
 \section{Quince micro compared to the Longan~nano}
 
@@ -87,7 +89,7 @@ and 25 of the \emph{Quince micro}
 \section{Quince micro as a CAN bus node}
 
 On the bottom side of the PCB, a CAN bus transceiver can be mounted
-(position U50) with its decoupling caacitor (C51, 100nF) and a four
+(position U50) with its decoupling capacitor (C51, 100nF) and a four
 pole SMD pin header. With the available signals CAN-high, CAN-low,
 5V-supply and Ground, the Quince micro can be supplied with power
 and act as a CAN bus node.
@@ -108,10 +110,10 @@ IO voltage are suitable. Examples of compatible transceivers are TJA1462
 
 On the short side of the PCB, opposite of the USB-S connector, there
 are solder pads suitable for two sets of five pin headers. The pinout
-is close to the \emph{WCH LinkE R0 1v3}; the switchable supply pins
-are missing. Also not available is the ``ModeSelect'' button. Its
-functionality can be controlled via software, as stated in the ``WCH-LinkUserManual''
-(version V2.4).
+is close to the \emph{WCH LinkE R0 1v3}; the power supply pins are
+not switchable. Also not available is the ``ModeSelect'' button.
+Its functionality can be controlled via software, as stated in the
+``WCH-LinkUserManual'' (version V2.4).
 
 \section{Setup of the Quince micro as a LinkE Debugger}
 
@@ -119,7 +121,7 @@ In the forum of mikrocontroller.net, user \href{https://www.mikrocontroller.net/
 posted the following \href{https://www.mikrocontroller.net/topic/578672\#7974902}{Instructions}
 that are similar for the \emph{Quince micro}:
 \begin{enumerate}
-\item Install the software from WCH installieren, commands for Linux:
+\item Install the software from WCH, commands for Linux:
 \begin{enumerate}
 \item \bgroup\inputencoding{latin9}
 \begin{lstlisting}
@@ -132,7 +134,7 @@ git clone https://github.com/ch32-rs/wlink
 \end{lstlisting}
 \leavevmode\egroup
 \end{enumerate}
-\item Build the software (see respective dokumentation)
+\item Build the software (see respective documentation)
 \item Put the microcontroller into the USB programming mode
 \begin{enumerate}
 \item unpower the Quince micro
@@ -150,9 +152,9 @@ wchisp flash WCH-LinkE-APP-IAP.bin
 \end{enumerate}
 \item restart the Quince micro: unplug USB, reconnect USB
 \end{enumerate}
-Now the Quince micro is ready to function as a WCH-LinkE apter. After
-connecting it to another CH32 target (for example another Quince micro),
-the second microcontroller can be programmed with, for example:
+Now the Quince micro is ready to function as a WCH-LinkE adapter.
+After connecting it to another CH32 target (for example another Quince
+micro), the second microcontroller can be programmed with, for example:
 \begin{enumerate}
 \item \bgroup\inputencoding{latin9}
 \begin{lstlisting}
@@ -197,6 +199,19 @@ of MicroPython for the CH32V307, this should also be useable for the
 CH32V305.
 
 \chapter*{Annex}
+
+\section*{Revision History}
+
+\subsection*{Revision v0.9}
+
+First production data.
+
+\subsection*{Revision v1.0}
+\begin{itemize}
+\item Changed the connection of PB8 and PB9 to match the RaspberryPi pinout,
+enabling an additional I\texttwosuperior C bus.
+\item Connected 5V and 3.3V to the debug connector (non-switchable supply)
+\end{itemize}
 
 \section*{Copyright}
 

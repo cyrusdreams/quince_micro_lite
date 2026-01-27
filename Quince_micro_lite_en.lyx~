@@ -89,7 +89,7 @@
 \begin_body
 
 \begin_layout Title
-Quince micro lite (v0.9)
+Quince micro lite (v1.0)
 \end_layout
 
 \begin_layout Author
@@ -97,7 +97,7 @@ CyrusDreams
 \end_layout
 
 \begin_layout Date
-December 2025
+January 2026
 \end_layout
 
 \begin_layout Chapter*
@@ -113,7 +113,7 @@ The 10-cent-microcontroller,
  In a forum at mikrocontroller.net,
  user F.P.
  analyzed the WCH LinkE debugging adapter and came to the conclusion that the binary code from WCH can be run on the USB enabled CH32V305 microcontroller.
- And because the CH32V305 da do so much more than its smaller sibling,
+ And because the CH32V305 can do so much more than its smaller sibling,
  the idea of this development board was born.
  
 \end_layout
@@ -127,11 +127,11 @@ lite
 \begin_inset Quotes brd
 \end_inset
 
- variant of said development board an its first produced version 
+ variant of said development board and its second production release version 
 \begin_inset Quotes bld
 \end_inset
 
-0.9
+1.0
 \begin_inset Quotes brd
 \end_inset
 
@@ -198,7 +198,7 @@ lite
 \begin_inset Quotes erd
 \end_inset
 
- version omits the switchable target suply voltages
+ version omits the switchable target supply voltages
 \end_layout
 
 \begin_layout Itemize
@@ -238,16 +238,11 @@ Raspberry Pi Pico
 
 \begin_layout Standard
 Remark:
- ports PB8 and PB9 will be exchanged in a later revision of the 
+ ports PB8 and PB9 are exchanged in the v0.9 revision of the 
 \emph on
-Quince micro
+Quince micro lite
 \emph default
- to enable an additional I²C interface,
- compatible to the 
-\emph on
-Raspberry Pi
-\emph default
- pinout.
+.
 \end_layout
 
 \begin_layout Section
@@ -302,7 +297,7 @@ Quince micro as a CAN bus node
 
 \begin_layout Standard
 On the bottom side of the PCB,
- a CAN bus transceiver can be mounted (position U50) with its decoupling caacitor (C51,
+ a CAN bus transceiver can be mounted (position U50) with its decoupling capacitor (C51,
  100nF) and a four pole SMD pin header.
  With the available signals CAN-high,
  CAN-low,
@@ -360,7 +355,7 @@ On the short side of the PCB,
 WCH LinkE R0 1v3
 \emph default
 ;
- the switchable supply pins are missing.
+ the power supply pins are not switchable.
  Also not available is the 
 \begin_inset Quotes eld
 \end_inset
@@ -414,7 +409,7 @@ Quince micro
 \end_layout
 
 \begin_layout Enumerate
-Install the software from WCH installieren,
+Install the software from WCH,
  commands for Linux:
 \end_layout
 
@@ -451,7 +446,7 @@ git clone https://github.com/ch32-rs/wlink
 
 \end_deeper
 \begin_layout Enumerate
-Build the software (see respective dokumentation)
+Build the software (see respective documentation)
 \end_layout
 
 \begin_layout Enumerate
@@ -513,7 +508,7 @@ restart the Quince micro:
 \end_layout
 
 \begin_layout Standard
-Now the Quince micro is ready to function as a WCH-LinkE apter.
+Now the Quince micro is ready to function as a WCH-LinkE adapter.
  After connecting it to another CH32 target (for example another Quince micro),
  the second microcontroller can be programmed with,
  for example:
@@ -559,19 +554,20 @@ Arduino
 \end_layout
 
 \begin_layout Standard
-WCH hat einen eigenen Arduino-Core veröffentlicht,
- damit kann der CH32V305-Microcontroller des Qince micro mit Arduino programmiert werden.
- Das Board selbst ist allerdings nicht hinterlegt,
- die Peripherie kann anhand der Belegung des Entwicklungsboards 
-\begin_inset Quotes eld
+WCH has released their own Arduino core.
+ With it,
+ the CH32V305-Microcontroller of the Qince micro can be programmed with the Arduino IDE.
+ The board itself is not available in the IDE,
+ but the peripherals can be addressed as on the development board 
+\begin_inset Quotes bld
 \end_inset
 
 CH32V305RBT6
-\begin_inset Quotes erd
+\begin_inset Quotes brd
 \end_inset
 
- verwendet werden.
- Folgende Pins (D* und A*) können verwendet werden:
+.
+ The following pins (D* and A*) are available:
 \end_layout
 
 \begin_layout Standard
@@ -589,7 +585,7 @@ PlatformIO
 \end_layout
 
 \begin_layout Standard
-Es gibt ein GitHub-Repositry für 
+There is a GitHub repositry for 
 \begin_inset CommandInset href
 LatexCommand href
 name "CH32V"
@@ -598,7 +594,7 @@ literal "false"
 
 \end_inset
 
- in der Entwucklingsumgebung PlatformIO.
+ in the PlatformIO IDE.
 \end_layout
 
 \begin_layout Section
@@ -606,7 +602,7 @@ cnlohr / ch32fun
 \end_layout
 
 \begin_layout Standard
-Der Entwickler und YouTuber CNLohr (Charles) hat für CH32V eine eigene Entwickungsumgebung namens 
+Developer and YouTuber CNLohr (Charles) released his own development environment for CH32V with the name 
 \begin_inset CommandInset href
 LatexCommand href
 name "ch32fun"
@@ -615,7 +611,7 @@ literal "false"
 
 \end_inset
 
- veröffentlicht.
+ on GitHub.
 \end_layout
 
 \begin_layout Section
@@ -623,37 +619,62 @@ Python
 \end_layout
 
 \begin_layout Standard
-Es gibt einen 
+There is an 
 \begin_inset CommandInset href
 LatexCommand href
-name "experimentellen Port"
+name "experimental port"
 target "https://github.com/r4d10n/micropython-wch-ch32v307/tree/master/ports/wch"
 literal "false"
 
 \end_inset
 
- von MicroPython für den CH32V307,
- dieser sollte sich auch für den CH32V305 verwenden lassen.
+ of MicroPython for the CH32V307,
+ this should also be useable for the CH32V305.
 \end_layout
 
 \begin_layout Chapter*
-Anhang
+Annex
 \end_layout
 
 \begin_layout Section*
-Urheberrechte
+Revision History
+\end_layout
+
+\begin_layout Subsection*
+Revision v0.9
 \end_layout
 
 \begin_layout Standard
-Dieser Test steht unter der CC-BY-SA-Lizenz.
- Markennamen und sonstige geschützte Begriffe sind Eigentum der jeweiligen Rechteinhaber.
- Dieser Text macht sich keinen dieser Begriffe zu eigen,
- sie werden im Text zur Dokumentation und Klarstellung verwendet.
+First production data.
+\end_layout
+
+\begin_layout Subsection*
+Revision v1.0
+\end_layout
+
+\begin_layout Itemize
+Changed the connection of PB8 and PB9 to match the RaspberryPi pinout,
+ enabling an additional I²C bus.
+\end_layout
+
+\begin_layout Itemize
+Connected 5V and 3.3V to the debug connector (non-switchable supply)
+\end_layout
+
+\begin_layout Section*
+Copyright
 \end_layout
 
 \begin_layout Standard
-Das Quince micro Board selbst steht unter der CERN-OHL-S-2.0-Lizenz,
- Veränderungen und Verbesserungen sind ausdrücklich erwünscht.
+This text is licensed by CC-BY-SA-4.0.
+ Product names and other trademarks are in the possession of their respective owners.
+ This text makes no claim regarding those names but needs to use them for documentation and clarification purposes.
+ 
+\end_layout
+
+\begin_layout Standard
+The Quince micro lite board itself is licensed via CERN-OHL-S-2.0,
+ modifications and improvements are welcome.
 \end_layout
 
 \end_body
